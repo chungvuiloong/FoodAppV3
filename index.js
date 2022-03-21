@@ -40,8 +40,9 @@ const displayEntry = (name, carbs, protein, fat, foodid) => {
         </div>
       </li>`
   );
-  let deleteBtn = document.querySelector(`#${foodid}`);
-  deleteBtn.addEventListener('click', () => deleteFood(foodid));
+
+  // let deleteBtn = document.querySelector(`#${foodid}`);
+  // deleteBtn.addEventListener('click', () => deleteFood(foodid));
 };
 
 form.addEventListener('submit', event => {
@@ -55,7 +56,6 @@ form.addEventListener('submit', event => {
       fat: { integerValue: fat.value },
     },
   }).then(data => {
-    console.log(data);
     if (data.error) {
       // There was an error
       snackbar.duration = 1800;
@@ -72,25 +72,30 @@ form.addEventListener('submit', event => {
 
 const init = () => {
   API.get('/foodAppV2').then(data => {
-    console.log('Get the data from Firebase');
-    console.log(data);
+    console.log('Get the data from Santosh Website');
+    console.log(data); 
 
     let dataArray = [];
     for (const key in data) {
       if (data.hasOwnProperty(key)) {
-        dataArray.push({ ...data[key], id: key}); // key = documents needs to change
+        dataArray.push({ ...data[key]}); // key = documents needs to change
       }
     }
+
     console.log(dataArray);
-    dataArray?.map(doc => {
-      // const fields = doc.fields;
-      displayEntry(
-        doc[0].fields.name.stringValue,
-        doc[0].fields.carbs.integerValue,
-        doc[0].fields.protein.integerValue,
-        doc[0].fields.fat.integerValue,
-      );
-    });
+
+    for (let i = 0; i < dataArray.length; i++) {
+      dataArray.forEach(doc => {
+        displayEntry(
+          doc[i].fields.name.stringValue,
+          doc[i].fields.carbs.integerValue,
+          doc[i].fields.protein.integerValue,
+          doc[i].fields.fat.integerValue,
+        );
+      });
+
+    }
+    
     render();
   });
 };
