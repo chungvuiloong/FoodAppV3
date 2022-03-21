@@ -1,0 +1,95 @@
+{
+  "_from": "snackbar",
+  "_id": "snackbar@1.1.0",
+  "_inBundle": false,
+  "_integrity": "sha512-gU03hDQqfIZEcfcUZtMwmVTjy0g3FSNhWlO2L7z78JK6rS487GPPQ8wfprD0fY9DBfUjHPqjfj2CT6lvdD7Lkg==",
+  "_location": "/snackbar",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "snackbar",
+    "name": "snackbar",
+    "escapedName": "snackbar",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/snackbar/-/snackbar-1.1.0.tgz",
+  "_shasum": "08615013ec16a8220e6218284938a3b15a01a6b0",
+  "_spec": "snackbar",
+  "_where": "C:\\Users\\oui20\\Desktop\\learnjavascript.online\\FoodTrackerApp",
+  "author": {
+    "name": "André Ruffert",
+    "email": "andreruffert.com"
+  },
+  "babel": {
+    "presets": [
+      "es2015"
+    ]
+  },
+  "browserify": {
+    "transform": [
+      [
+        "babelify",
+        {
+          "presets": [
+            "es2015"
+          ]
+        }
+      ]
+    ]
+  },
+  "bugs": {
+    "url": "https://github.com/andreruffert/snackbar/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "Lightweight feedback notifications",
+  "devDependencies": {
+    "autoprefixer-cli": "^1.0.0",
+    "babel-cli": "^6.2.0",
+    "babel-preset-es2015": "^6.1.18",
+    "babelify": "^7.2.0",
+    "browserify": "^12.0.1",
+    "clean-css": "^3.4.8",
+    "mkdirp": "^0.5.1",
+    "node-sass": "^3.4.2",
+    "npm-run-all": "^1.3.1",
+    "uglify-js": "^3.1.10"
+  },
+  "files": [
+    "dist",
+    "lib",
+    "src"
+  ],
+  "homepage": "https://github.com/andreruffert/snackbar#readme",
+  "keywords": [
+    "notification",
+    "ui",
+    "notify",
+    "feedback"
+  ],
+  "license": "MIT",
+  "main": "lib/index.js",
+  "name": "snackbar",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andreruffert/snackbar.git"
+  },
+  "scripts": {
+    "browserify": "browserify src/index.js > dist/$npm_package_name.js --standalone $npm_package_name",
+    "build": "mkdirp dist && npm-run-all build:*",
+    "build:css": "npm-run-all sass cleancss",
+    "build:js": "npm-run-all browserify uglify",
+    "cleancss": "cleancss dist/$npm_package_name.css > dist/$npm_package_name.min.css",
+    "prepublish": "babel src --out-dir lib",
+    "sass": "node-sass --output-style expanded src/$npm_package_name.scss | autoprefixer-cli > dist/$npm_package_name.css",
+    "uglify": "uglifyjs dist/$npm_package_name.js -o dist/$npm_package_name.min.js"
+  },
+  "version": "1.1.0"
+}

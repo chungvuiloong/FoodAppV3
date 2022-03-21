@@ -1,0 +1,8 @@
+{
+  "devDependencies": {
+    "parcel": "^2.3.2"
+  },
+  "dependencies": {
+    "chart": "^0.1.2"
+  }
+}

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="HTML, CSS, JavaScript">
+    <meta name="description" content="Review JavaScript">
+    <meta name="author" content="Waranya S.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./index.css">
+    <!-- <link rel="icon" href="favicon.png" type="image/png"> -->
+    <title>Food Tracker App</title>
+
+</head>
+
+<body>
+    <nav id="navbar"><a href="#" class="nav-brand">My Nutrition</a></nav>
+    <div class=container id="main">
+        <div class="inner-container">
+            <h2>Add food</h2>
+            <form id="create-form">
+                <label for="create-name">Food name:</label>
+                <input autocomplete="off" list="foodlist" type="text" id="create-name" style="text-align: left;"
+                    required />
+                <datalist id="foodlist">
+                    <option value="Hamburger">
+                    <option value="Salad">
+                    <option value="Sandwich">
+                    <option value="Sushi">
+                    <option value="Lasagne">
+                    <option value="Pizza">
+                    <option value="Cake"></option>
+                </datalist>
+                <div class="nutrition-values">
+                    <label for="create-carbs">Carbs:</label>
+                    <input class="nutrition-input" type="number" id="create-carbs" min="0" max="200" placeholder="0g"
+                        step="0.01" required>
+
+                    <label for="create-protein">Protein:</label>
+                    <input class="nutrition-input" type="number" id="create-protein" min="0" max="200" placeholder="0g"
+                        step="0.01" required>
+
+                    <label for="create-fat">Fat:</label>
+                    <input class="nutrition-input" type="number" id="create-fat" min="0" max="200" placeholder="0g"
+                        step="0.01" required>
+                    <div></div>
+                    <input type="submit" class="create-submit" value="Add">
+                </div>
+            </form>
+        </div>
+
+        <h2 class="statistics">Statistics</h2>
+        <canvas id="app-chart" width="100%"></canvas>
+        <h2 class="log">Log</h2>
+        <div id="total-calories-container">
+            <h3>Total calories logged : <span id="total-calories">0</span></h3>
+        </div>
+        <ul id="food-list"></ul>
+    </div>
+    <script type="module" src="./index.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+</body>
+
+</html>
