@@ -41,8 +41,8 @@ const displayEntry = (name, carbs, protein, fat, foodid) => {
       </li>`
   );
 
-  // let deleteBtn = document.querySelector(`#${foodid}`);
-  // deleteBtn.addEventListener('click', () => deleteFood(foodid));
+  let deleteBtn = document.querySelector(`#${foodid}`);
+  deleteBtn.addEventListener('click', () => deleteFood(foodid));
 };
 
 form.addEventListener('submit', event => {
@@ -73,18 +73,23 @@ form.addEventListener('submit', event => {
 const init = () => {
   API.get('/foodAppV2').then(data => {
     console.log('Get the data from Santosh Website');
-    console.log(data); 
+
+
+    console.log(data);
+    console.log(data.documents.length);
 
     let dataArray = [];
+
+
     for (const key in data) {
       if (data.hasOwnProperty(key)) {
-        dataArray.push({ ...data[key]}); // key = documents needs to change
+        dataArray.push({ ...data[key], id: "foodList" }); // key = documents needs to change
       }
     }
-
     console.log(dataArray);
 
-    for (let i = 0; i < dataArray.length; i++) {
+
+    for (let i = 0; i < data.documents.length; i++) {
       dataArray.forEach(doc => {
         displayEntry(
           doc[i].fields.name.stringValue,
@@ -92,14 +97,11 @@ const init = () => {
           doc[i].fields.protein.integerValue,
           doc[i].fields.fat.integerValue,
         );
-      });
-
-    }
+      });}
     
     render();
   });
 };
-
 
 let chartInstance = null;
 const renderChart = () => {
@@ -141,9 +143,10 @@ const render = () => {
   updateTotalCalories();
 };
 
-// function deleteFood() {
-//   let url = '/foodAppV2';
-//   API.delete(url, {}).then(() => window.location.reload());
-// }
+function deleteFood(e) {
+  e.preventDefault();
+  // let url = '/foodAppV2';
+  // API.delete(url, {}).then(() => window.location.reload());
+}
 
 init();
