@@ -87,6 +87,8 @@ const init = () => {
       });
     }
 
+    
+
     for (let i = 0; i < data.documents.length; i++) {
       dataArray.forEach(doc => {
         displayEntry(
@@ -94,7 +96,7 @@ const init = () => {
           doc[i].fields.carbs.integerValue,
           doc[i].fields.protein.integerValue,
           doc[i].fields.fat.integerValue,
-          doc[i].fields.foodid.stringValue,
+          doc[i].fields.foodid.stringValue
         );
       });}
     
@@ -119,7 +121,7 @@ const renderChart = () => {
             appData.getTotalProtein(),
             appData.getTotalFat(),
           ],
-          backgroundColor: ['#25aeee', '#fecd52', '#ff6384'],
+          backgroundColor: ['#25aeee', '#fecd52', '#45c745'],
         },
       ],
     },
@@ -133,7 +135,7 @@ const renderChart = () => {
     },
       
       title: {
-        display: true,
+        display: false,
         text: 'Macronutrients',
       },
     },
@@ -151,7 +153,7 @@ const render = () => {
 };
 
 function deleteFood(foodid) {
-  let newURL = URL + '/foodAppV4' + foodid ;
+  let newURL = URL + '/foodAppV4/' + foodid ;
   API.delete(newURL, {}).then(() => window.location.reload());
 }
 

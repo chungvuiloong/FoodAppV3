@@ -81,6 +81,18 @@ label {
     font-weight: bold;
 }
 
+#create-carbs {
+background-color: #25aeee;
+}
+
+#create-protein {
+    background-color: #fecd52;
+ }
+
+ #create-fat {
+    background-color: #45c745;
+ }
+
 input:not(.create-submit) {
     font-size: 1.5rem;
     margin-bottom: 1.5rem;
@@ -196,7 +208,7 @@ input#create-name {
 }
 
 .card .fat::marker {
-    color: #ff6384;
+    color: #45c745;
     font-size: 1.8rem;
 }
 
