@@ -79,13 +79,13 @@ const init = () => {
 
     for (const key in data) {
       if (data.hasOwnProperty(key)) {
-        dataArray.push({ ...data[key], id: "foodList" }); // key = documents needs to change
+        dataArray.push({ ...data[key]}); // key = documents needs to change
       }
     }
     console.log(dataArray);
 
     for (let i = 0; i < data.documents.length; i++) {
-      dataArray.forEach((data)=> { data[i].foodid = data[i].name.replace("projects/programmingjs-90a13/databases/(default)/documents/foodAppV4/", "");
+      dataArray.forEach((data)=> { data[i].fields.foodid = data[i].name.replace('projects/programmingjs-90a13/databases/(default)/documents/foodAppV4/', '');
       });
     }
 
@@ -96,6 +96,7 @@ const init = () => {
           doc[i].fields.carbs.integerValue,
           doc[i].fields.protein.integerValue,
           doc[i].fields.fat.integerValue,
+          doc[i].fields.foodid.stringValue,
         );
       });}
     
@@ -125,6 +126,14 @@ const renderChart = () => {
       ],
     },
     options: {
+      scales: {
+        yAxes: [{
+            ticks: {
+                beginAtZero: true
+            }
+        }]
+    },
+      
       title: {
         display: true,
         text: 'Macronutrients',
@@ -144,7 +153,7 @@ const render = () => {
 };
 
 function deleteFood(e) {
-  e.preventDefault();
+  // e.preventDefault();
   // let url = '/foodAppV4';
   // API.delete(url, {}).then(() => window.location.reload());
 }
