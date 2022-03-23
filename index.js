@@ -7,7 +7,6 @@ const URL = "https://firestore.googleapis.com/v1/projects/programmingjs-90a13/da
 
 const API = new FetchWrapper(URL);
 const appData = new AppData();
-
 const snackbar = new Snackbar();
 
 const list = document.querySelector('#food-list');
@@ -48,7 +47,7 @@ const displayEntry = (name, carbs, protein, fat, foodid) => {
 form.addEventListener('submit', event => {
   event.preventDefault();
 
-  API.post('/foodAppV2', {
+  API.post('/foodAppV4', {
     fields: {
       name: { stringValue: name.value },
       carbs: { integerValue: carbs.value },
@@ -71,13 +70,10 @@ form.addEventListener('submit', event => {
 });
 
 const init = () => {
-  API.get('/foodAppV2').then(data => {
+  API.get('/foodAppV4').then(data => {
     console.log('Get the data from Santosh Website');
-
-
     console.log(data);
-    console.log(data.documents.length);
-
+    console.log(data.documents.name);
     let dataArray = [];
 
 
@@ -88,6 +84,10 @@ const init = () => {
     }
     console.log(dataArray);
 
+    for (let i = 0; i < data.documents.length; i++) {
+      dataArray.forEach((data)=> { data[i].foodid = data[i].name.replace("projects/programmingjs-90a13/databases/(default)/documents/foodAppV4/", "");
+      });
+    }
 
     for (let i = 0; i < data.documents.length; i++) {
       dataArray.forEach(doc => {
@@ -145,7 +145,7 @@ const render = () => {
 
 function deleteFood(e) {
   e.preventDefault();
-  // let url = '/foodAppV2';
+  // let url = '/foodAppV4';
   // API.delete(url, {}).then(() => window.location.reload());
 }
 
