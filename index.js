@@ -79,7 +79,7 @@ const init = () => {
 
     for (const key in data) {
       if (data.hasOwnProperty(key)) {
-        dataArray.push({ ...data[key]}); // key = documents needs to change
+        dataArray.push({ ...data[key]});
       }
     }
     console.log(dataArray);
@@ -152,10 +152,9 @@ const render = () => {
   updateTotalCalories();
 };
 
-function deleteFood(e) {
-  // e.preventDefault();
-  // let url = '/foodAppV4';
-  // API.delete(url, {}).then(() => window.location.reload());
+function deleteFood(foodid) {
+  let newURL = URL + '/foodAppV4' + foodid ;
+  API.delete(newURL, {}).then(() => window.location.reload());
 }
 
 init();
