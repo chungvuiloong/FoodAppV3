@@ -72,8 +72,6 @@ form.addEventListener('submit', event => {
 const init = () => {
   API.get('/foodAppV4').then(data => {
     console.log('Get the data from Santosh Website');
-    console.log(data);
-    console.log(data.documents.name);
     let dataArray = [];
 
 
